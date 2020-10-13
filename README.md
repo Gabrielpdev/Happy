@@ -38,8 +38,10 @@
 </p>
 
 ## ℹ️ O que há na Next Level Week?<a name = "nwl"></a>
-<p align="center" >O NLW é uma semana prática com muito código, desafios, redes e um único objetivo: levá-lo ao próximo nível. Através do nosso método, você aprenderá novas ferramentas, aprenderá sobre novas tecnologias e descobrirá hacks que irão impulsionar sua carreira. Um evento online e totalmente gratuito que o ajudará a dar o próximo passo na sua evolução como desenvolvedor.
-<img src=".github/nlw.svg" alt="#NextLevelWeek" title="#NextLevelWeek" />
+<p align="center" >
+	<img src=".github/nlw.svg" alt="#NextLevelWeek" title="#NextLevelWeek" />
+	<p>O NLW é uma semana prática com muito código, desafios, redes e um único objetivo: levá-lo ao próximo nível. Através do nosso método, você aprenderá novas ferramentas, aprenderá sobre novas tecnologias e descobrirá hacks que irão impulsionar sua carreira. Um evento online e totalmente gratuito que o ajudará a dar o próximo passo na sua evolução como desenvolvedor.</p>
+
 </p>
 
 ## 🧐 Sobre <a name = "about"></a>
