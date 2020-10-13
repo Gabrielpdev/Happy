@@ -57,31 +57,33 @@ Instruções de como acessar as rotas e instalação.
 
 ### ⚒ Instalando <a name = "installing"></a>
 
-```
-# É necessário ter o docker na sua máquina
+1.``git clone https://github.com/Gabrielpdev/Happy.git``<br/>
 
-git clone https://github.com/Gabrielpdev/Happy.git
+#### ⚙️ Iniciando com o Back-end
 
-# Go into the backend repository
+Entrando no backend <br/> <br/>
+2. ``cd Happy``<br/> 
+3. Configure o arquivo ``ormconfig.json`` de acordo com seu banco de dados <br/> 
+4. ``yarn typeorm migration:run`` <br/> 
+5. ``yarn dev`` <br/> 
 
-$ cd Happy
+#### 💻 Iniciando com o Front-end
 
-... 🚧 em construção 🚧...
+``... 🚧 em construção 🚧...``
 
-# 💻 Iniciando com o Front-end
+#### 📱 Iniciando com o Mobile
 
-... 🚧 em construção 🚧...
+``... 🚧 em construção 🚧...``
 
-# 📱 Iniciando com o Mobile
-
-... 🚧 em construção 🚧...
-
-```
 
 ## ⛏️ Tecnologias Utilizadas <a name = "built_using"></a>
 
 As seguintes ferramentas foram usadas na construção do projeto:
 - 🔵 [TypeScript][typescript]
+- 🟢 [Node Js][nodejs]
+- ⚙ [TypeORM][typeorm]
+- 🐘 [Postgres][postgres]
+- ✅ [Yup][yup]
 - ⚛️ [React][reactjs]
 - 💅 [Styled-components][styled-components]
 ... 🚧 em construção 🚧...
@@ -102,6 +104,7 @@ Feito com ❤️ por Gabriel Pereira 👋🏽 [Entre em contato!](https://www.li
 [typeorm]: https://typeorm.io/#/
 [nodejs]: https://nodejs.org/en/
 [redis]: https://redis.io/
+[yup]: https://github.com/jquense/yup
 [typescript]: https://www.typescriptlang.org/
 [reactjs]: https://reactjs.org
 [reactNative]: https://reactnative.dev/
