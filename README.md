@@ -51,6 +51,11 @@ A aplicação visa estabelecer um contato entre as pessoas que deseja visitar um
 mais próximos de sua localização. Como a aplicação foi feita nos dias das crianças, o melhor presente
 que uma criança pode ganhar é o seu tempo e sua atenção a ela.<br/> 
 
+<span align="center">
+	<h2>Desktop</h2>
+	<img alt="Happy" title="#Happy" src=".github/web.gif" height="300px"  />
+</span>
+
 ## 🏁 Iniciando <a name = "getting_started"></a>
 
 Instruções de como acessar as rotas e instalação.
