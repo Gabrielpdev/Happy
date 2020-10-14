@@ -1,5 +1,5 @@
 <h2 align="center">
-    <img alt="Happy" title="#Happy" src=".github/logo.png" width="350px" />
+    <img alt="Happy" title="#Happy" src=".github/logo.svg" width="350px" />
 </h2>
   
 <p align="center">
@@ -38,8 +38,10 @@
 </p>
 
 ## ℹ️ O que há na Next Level Week?<a name = "nwl"></a>
-<p>O NLW é uma semana prática com muito código, desafios, redes e um único objetivo: levá-lo ao próximo nível. Através do nosso método, você aprenderá novas ferramentas, aprenderá sobre novas tecnologias e descobrirá hacks que irão impulsionar sua carreira. Um evento online e totalmente gratuito que o ajudará a dar o próximo passo na sua evolução como desenvolvedor.
-<img src=".github/nlw.svg" alt="#NextLevelWeek" title="#NextLevelWeek" />
+<p align="center" >
+	<img src=".github/nlw.svg" alt="#NextLevelWeek" title="#NextLevelWeek" />
+	<p>O NLW é uma semana prática com muito código, desafios, redes e um único objetivo: levá-lo ao próximo nível. Através do nosso método, você aprenderá novas ferramentas, aprenderá sobre novas tecnologias e descobrirá hacks que irão impulsionar sua carreira. Um evento online e totalmente gratuito que o ajudará a dar o próximo passo na sua evolução como desenvolvedor.</p>
+
 </p>
 
 ## 🧐 Sobre <a name = "about"></a>
@@ -55,31 +57,33 @@ Instruções de como acessar as rotas e instalação.
 
 ### ⚒ Instalando <a name = "installing"></a>
 
-```
-# É necessário ter o docker na sua máquina
+1.``git clone https://github.com/Gabrielpdev/Happy.git``<br/>
 
-git clone https://github.com/Gabrielpdev/Happy.git
+#### ⚙️ Iniciando com o Back-end
 
-# Go into the backend repository
+Entrando no backend <br/> <br/>
+2. ``cd Happy``<br/> 
+3. Configure o arquivo ``ormconfig.json`` de acordo com seu banco de dados <br/> 
+4. ``yarn typeorm migration:run`` <br/> 
+5. ``yarn dev`` <br/> 
 
-$ cd Happy
+#### 💻 Iniciando com o Front-end
 
-... 🚧 em construção 🚧...
+``... 🚧 em construção 🚧...``
 
-# 💻 Iniciando com o Front-end
+#### 📱 Iniciando com o Mobile
 
-... 🚧 em construção 🚧...
+``... 🚧 em construção 🚧...``
 
-# 📱 Iniciando com o Mobile
-
-... 🚧 em construção 🚧...
-
-```
 
 ## ⛏️ Tecnologias Utilizadas <a name = "built_using"></a>
 
 As seguintes ferramentas foram usadas na construção do projeto:
 - 🔵 [TypeScript][typescript]
+- 🟢 [Node Js][nodejs]
+- ⚙ [TypeORM][typeorm]
+- 🐘 [Postgres][postgres]
+- ✅ [Yup][yup]
 - ⚛️ [React][reactjs]
 - 💅 [Styled-components][styled-components]
 ... 🚧 em construção 🚧...
@@ -100,6 +104,7 @@ Feito com ❤️ por Gabriel Pereira 👋🏽 [Entre em contato!](https://www.li
 [typeorm]: https://typeorm.io/#/
 [nodejs]: https://nodejs.org/en/
 [redis]: https://redis.io/
+[yup]: https://github.com/jquense/yup
 [typescript]: https://www.typescriptlang.org/
 [reactjs]: https://reactjs.org
 [reactNative]: https://reactnative.dev/
