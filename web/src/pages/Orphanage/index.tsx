@@ -9,9 +9,9 @@ import SideBar from "../../components/SideBar";
 import { useTheme } from "../../hooks/Themes";
 import mapMarkerLight from '../../images/map-marker-light.svg';
 import mapMarkerDark from '../../images/map-marker-dark.svg';
-
-import './styles.css';
 import { useParams } from "react-router-dom";
+
+import { Container, Detail,Content } from './styles';
 
 interface OrphanageProps {
   name: string,
@@ -60,11 +60,11 @@ export default function Orphanage() {
   }
 
   return (
-    <div id="page-orphanage">
+    <Container>
       <SideBar />
 
       <main>
-        <div className="orphanage-details">
+        <Detail>
           <img src={orphanage.images[activeIndex].url} alt={orphanage.name} />
 
           <div className="images">
@@ -75,7 +75,7 @@ export default function Orphanage() {
             ))}
           </div>
           
-          <div className="orphanage-details-content">
+          <Content>
             <h1>{orphanage.name}</h1>
             <p>{orphanage.about}</p>
 
@@ -91,7 +91,7 @@ export default function Orphanage() {
                 doubleClickZoom={false}
               >
                 <TileLayer 
-                  url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
+                  url={`https://api.mapbox.com/styles/v1/mapbox/${theme.title}-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
                 />
                 <Marker interactive={false} icon={mapIcon} position={[orphanage.latitude,orphanage.longitude]} />
               </Map>
@@ -128,14 +128,13 @@ export default function Orphanage() {
 
               )}
             </div>
-
             {/* <button type="button" className="contact-button">
               <FaWhatsapp size={20} color="#FFF" />
               Entrar em contato
             </button> */}
-          </div>
-        </div>
+          </Content>
+        </Detail>
       </main>
-    </div>
+    </Container>
   );
 }

@@ -1,25 +1,39 @@
 import React from 'react';
-import { FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft, FiMoon, FiSun } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
+import { useTheme } from '../../hooks/Themes';
 
-import mapMarkerImg from '../../images/map-marker-light.svg';
+import mapMarkerLight from '../../images/map-marker-light.svg';
+import mapMarkerDark from '../../images/map-marker-dark.svg';
 
-import './styles.css';
-
+import { Container, Theme, Footer } from './styles';
 
 const SideBar: React.FC = () => {
+  const { ToggleTheme, theme } = useTheme();
   const {goBack} = useHistory()
 
   return (
-    <aside className='app-sidebar' >
-        <img src={mapMarkerImg} alt="Happy" />
+    <Container>
+      {theme.title === 'light' ? (
+        <img src={mapMarkerLight} alt="Happy"/>
+        ): (
+        <img src={mapMarkerDark} alt="Happy"/>
+      )}
 
-        <footer>
-          <button type="button" onClick={goBack}>
-            <FiArrowLeft size={24} color="#FFF" />
-          </button>
-        </footer>
-      </aside>
+      <Footer>
+        <Theme type="button" onClick={ToggleTheme}>
+          {theme.title === 'light' ? (
+            <FiMoon size={32} color='#fff' /> 
+          ): (
+            <FiSun size={32} color='#fff' /> 
+          ) }
+        </Theme>
+
+        <button type="button" onClick={goBack} className='goBack'>
+          <FiArrowLeft size={24} color="#FFF" />
+        </button>
+      </Footer>
+    </Container>
   );
 }
 

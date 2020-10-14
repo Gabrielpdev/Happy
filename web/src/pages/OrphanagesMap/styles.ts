@@ -94,7 +94,7 @@ export const Maps = styled(Map)`
     }
 
     .leaflet-popup-content {
-      color: #0089a5;
+      color: var(--fnt-primary);
       font-size: 20px;
       font-weight: bold;
       margin: 8px 12px;
@@ -107,13 +107,19 @@ export const Maps = styled(Map)`
     .leaflet-popup-content a{
       width: 48px;
       height: 48px;
-      background: #15c3d6;
+      background: var(--bg-button);
       box-shadow: 17.2868px 27.6589px 41.4884px rgba(23, 142, 166, 0.16);
       border-radius: 12px;
 
       display: flex;
       align-items: center;
       justify-content: center;
+
+      transition: background-color 0.2s;
+
+      &:hover{
+        background: var(--bg-button_hover);
+      } 
     }
 
     .leaflet-popup-tip-container{

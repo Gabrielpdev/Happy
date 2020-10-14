@@ -63,7 +63,7 @@ function OrphanagesMap() {
             ): (
               <FiSun size={32} color='#fff' /> 
             ) }
-            </button>
+          </button>
         </footer>
       </aside>
 

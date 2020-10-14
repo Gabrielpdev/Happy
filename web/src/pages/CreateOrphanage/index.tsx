@@ -1,5 +1,5 @@
 import React, {
-  ChangeEvent, FormEvent, useCallback, useMemo, useState,
+  ChangeEvent, FormEvent, useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { useHistory } from 'react-router-dom';
@@ -11,13 +11,15 @@ import { useTheme } from '../../hooks/Themes';
 import mapMarkerLight from '../../images/map-marker-light.svg';
 import mapMarkerDark from '../../images/map-marker-dark.svg';
 
-import './styles.css';
 import SideBar from '../../components/SideBar';
 import api from '../../services/api';
+
+import { Container, Form } from './styles';
 
 export default function CreateOrphanage() {
   const history = useHistory();
   const { theme } = useTheme();
+  const [ coord, setCoord] = useState({ latitude: 0, longitude: 0 });
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
 
   const [name, setName] = useState('');
@@ -27,6 +29,22 @@ export default function CreateOrphanage() {
   const [open_on_weekends, setOpenOnWeekends] = useState(true);
   const [images, setImages] = useState<File[]>([]);
   const [previewImages, setPreviewImages] = useState<string[]>([]);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+
+        setCoord({ latitude, longitude });
+      },
+      (err) => {
+        console.log(err);
+      },
+      {
+        timeout: 30000,
+      }
+    )
+  }, []);
 
   const handleMapClick = useCallback((event: LeafletMouseEvent) => {
     const { lat, lng } = event.latlng;
@@ -81,22 +99,22 @@ export default function CreateOrphanage() {
   }), [theme]);
 
   return (
-    <div id="page-create-orphanage">
+    <Container>
       <SideBar />
 
       <main>
-        <form className="create-orphanage-form" onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <fieldset>
             <legend>Dados</legend>
 
             <Map
-              center={[-27.2092052, -49.6401092]}
+              center={[coord.latitude, coord.longitude]}
               style={{ width: '100%', height: 280 }}
               zoom={15}
               onClick={handleMapClick}
             >
               <TileLayer
-                url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
+                url={`https://api.mapbox.com/styles/v1/mapbox/${theme.title}-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
               />
 
               { position.latitude !== 0 && (
@@ -127,7 +145,7 @@ export default function CreateOrphanage() {
                 ))}
 
                 <label htmlFor="images[]" className="new-image">
-                  <FiPlus size={24} color="#15b6d6" />
+                  <FiPlus size={24} />
                 </label>
               </div>
 
@@ -145,7 +163,7 @@ export default function CreateOrphanage() {
             </div>
 
             <div className="input-block">
-              <label htmlFor="opening_hours">Nome</label>
+              <label htmlFor="opening_hours">Horário de funcionamento</label>
               <input id="opening_hours" value={opening_hours} onChange={(e) => setOpeningHours(e.target.value)} />
             </div>
 
@@ -162,9 +180,9 @@ export default function CreateOrphanage() {
           <button className="confirm-button" type="submit">
             Confirmar
           </button>
-        </form>
+        </Form>
       </main>
-    </div>
+    </Container>
   );
 }
 
