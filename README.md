@@ -68,17 +68,23 @@ Instruções de como acessar as rotas e instalação.
 
 Entrando no backend <br/> <br/>
 2. ``cd Happy``<br/> 
-3. Configure o arquivo ``ormconfig.json`` de acordo com seu banco de dados <br/> 
-4. ``yarn typeorm migration:run`` <br/> 
-5. ``yarn dev`` <br/> 
+3. ``cd server``<br/> 
+4. Configure o arquivo ``ormconfig.json`` de acordo com seu banco de dados <br/> 
+5. ``yarn typeorm migration:run`` <br/> 
+6. ``yarn dev`` <br/> 
 
 #### 💻 Iniciando com o Front-end
 
-``... 🚧 em construção 🚧...``
+7. ``cd web``
+8. ``yarn start``
 
 #### 📱 Iniciando com o Mobile
 
-``... 🚧 em construção 🚧...``
+9. Instalar o aplicativo Expo no seu celular
+10. ``cd mobile``
+11. ``yarn start``
+12. Escanear o QRCode disponibilizado na tela.
+13. App pronto para uso !
 
 
 ## ⛏️ Tecnologias Utilizadas <a name = "built_using"></a>
@@ -90,6 +96,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - 🐘 [Postgres][postgres]
 - ✅ [Yup][yup]
 - ⚛️ [React][reactjs]
+- ⚛️ [React Native][reactNative]
+- 🔼 [Expo][expo]
+- 🗺️ [MapView][expo-maps]
 - 💅 [Styled-components][styled-components]
 ... 🚧 em construção 🚧...
 
@@ -103,6 +112,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 Feito com ❤️ por Gabriel Pereira 👋🏽 [Entre em contato!](https://www.linkedin.com/in/gabriel-pereira-oliveira-78b1801ab/)
 
 [expo]: https://expo.io/
+[expo-maps]: https://docs.expo.io/versions/latest/sdk/map-view/
 [image-picker]: https://docs.expo.io/versions/latest/sdk/imagepicker/
 [handlebars]: https://handlebarsjs.com/
 [postgres]: https://www.postgresql.org/
