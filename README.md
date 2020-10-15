@@ -68,15 +68,13 @@ Instruções de como acessar as rotas e instalação.
 
 Entrando no backend <br/> <br/>
 2. ``cd Happy``<br/> 
-3. ``cd server``<br/> 
-4. Configure o arquivo ``ormconfig.json`` de acordo com seu banco de dados <br/> 
-5. ``yarn typeorm migration:run`` <br/> 
-6. ``yarn dev`` <br/> 
+3. Configure o arquivo ``ormconfig.json`` de acordo com seu banco de dados <br/> 
+4. ``yarn typeorm migration:run`` <br/> 
+5. ``yarn dev`` <br/> 
 
 #### 💻 Iniciando com o Front-end
 
-7.``cd web.``
-8.``yarn start.``
+``... 🚧 em construção 🚧...``
 
 #### 📱 Iniciando com o Mobile
 
