@@ -75,16 +75,16 @@ Entrando no backend <br/> <br/>
 
 #### 💻 Iniciando com o Front-end
 
-7. ``cd web``
-8. ``yarn start``
+7. ``cd web`` <br/> 
+8. ``yarn start`` <br/> 
 
 #### 📱 Iniciando com o Mobile
 
-9. Instalar o aplicativo Expo no seu celular
-10. ``cd mobile``
-11. ``yarn start``
-12. Escanear o QRCode disponibilizado na tela.
-13. App pronto para uso !
+9. Instalar o aplicativo Expo no seu celular <br/> 
+10. ``cd mobile`` <br/> 
+11. ``yarn start`` <br/> 
+12. Escanear o QRCode disponibilizado na tela. <br/> 
+13. App pronto para uso ! <br/> 
 
 
 ## ⛏️ Tecnologias Utilizadas <a name = "built_using"></a>
