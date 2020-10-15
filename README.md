@@ -24,7 +24,7 @@
 </p>
 
 <h2 align="center">
-    <img alt="Happy" title="#Happy" src=".github/HappyWeb.png" width="350px" />
+    <img alt="Happy" title="#Happy" src=".github/HappyWeb.png" width="450px" />
 </h2>
 
 
@@ -53,7 +53,7 @@ que uma criança pode ganhar é o seu tempo e sua atenção a ela.<br/>
 
 <span align="center">
 	<h2>Desktop</h2>
-	<img alt="Happy" title="#Happy" src=".github/web.gif" height="300px"  />
+	<img alt="Happy" title="#Happy" src=".github/web.gif"/>
 </span>
 
 ## 🏁 Iniciando <a name = "getting_started"></a>
