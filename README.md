@@ -57,7 +57,7 @@ que uma criança pode ganhar é o seu tempo e sua atenção a ela.<br/>
 	<img alt="Happy" title="#Happy" src=".github/web.gif"/>
 </span>
 
-## ➕ Sobre <a name = "additional"></a>
+## ➕ Funcionalidades Adicionais <a name = "additional"></a>
 
 Foi Adicionado styled-components e o tema dark, com o uso do useContext e a criação do próprio hook
 para facilitar a chamada da troca de tema em qualquer lugar na aplicação.
