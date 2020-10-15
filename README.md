@@ -32,6 +32,7 @@
 <p align="center">
 <a href="#nwl">O que há na Next Level Week?</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#about">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#additional">Funcionalidades Adicionais</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#getting_started">Iniciando</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#built_using">Tecnologias Utilizadas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#contribute">Como contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -55,6 +56,11 @@ que uma criança pode ganhar é o seu tempo e sua atenção a ela.<br/>
 	<h2>Desktop</h2>
 	<img alt="Happy" title="#Happy" src=".github/web.gif"/>
 </span>
+
+## ➕ Sobre <a name = "additional"></a>
+
+Foi Adicionado styled-components e o tema dark, com o uso do useContext e a criação do próprio hook
+para facilitar a chamada da troca de tema em qualquer lugar na aplicação.
 
 ## 🏁 Iniciando <a name = "getting_started"></a>
 
