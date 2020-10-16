@@ -20,13 +20,13 @@ const OrphanagesMap: React.FC = () => {
   const navigation = useNavigation();
   const [ orphanages, setOrphanages] = useState<OrphanagesProps[]>([]);
 
-  useFocusEffect(
+  useFocusEffect(() => {
     useCallback(() => {
-      api.get('orphanages').then(response => {
+      api.get('/orphanages').then(response => {
         setOrphanages(response.data);
-      });
-    }, [])
-  );
+      })
+    },[])
+  })
 
   const handleNavigateToOrphanageDetails = useCallback((id: string) => {
     navigation.navigate('OrphanageDetails', { id });
