@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
-import { Dimensions, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
+import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   flex: 1;
@@ -50,7 +50,7 @@ export const FooterText = styled.Text`
   color: #8fa7b3;
 `;
 
-export const Button = styled(TouchableOpacity)`
+export const Button = styled(RectButton)`
   width: 56px;
   height: 56px;
   background-color: #15c3d6;
