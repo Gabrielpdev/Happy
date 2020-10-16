@@ -105,8 +105,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - ⚛️ [React Native][reactNative]
 - 🔼 [Expo][expo]
 - 🗺️ [MapView][expo-maps]
+- 📷 [Expo Image Picker][image-picker]
 - 💅 [Styled-components][styled-components]
-... 🚧 em construção 🚧...
 
 ## 🤔 Como contribuir <a name = "contribute"></a>
 
@@ -119,6 +119,7 @@ Feito com ❤️ por Gabriel Pereira 👋🏽 [Entre em contato!](https://www.li
 
 [expo]: https://expo.io/
 [expo-maps]: https://docs.expo.io/versions/latest/sdk/map-view/
+[image-picker]: https://docs.expo.io/versions/latest/sdk/imagepicker/
 [image-picker]: https://docs.expo.io/versions/latest/sdk/imagepicker/
 [handlebars]: https://handlebarsjs.com/
 [postgres]: https://www.postgresql.org/
