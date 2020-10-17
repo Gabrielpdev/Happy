@@ -1,3 +1,4 @@
+import { Dimensions } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import MapView from 'react-native-maps';
 import styled, { css } from 'styled-components/native';
@@ -35,8 +36,8 @@ export const ImageContainer = styled.View`
   height: 240px;
 `;
 
-export const Image = styled.Image`
-  width: 100%;
+export const Images = styled.Image`
+  width: ${Dimensions.get('window').width};
   height: 240px;
 `;
 

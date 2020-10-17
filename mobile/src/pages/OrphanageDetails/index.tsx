@@ -1,5 +1,12 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useCallback, useEffect, useState } from 'react';
-import { View, ScrollView, Linking } from 'react-native';
+import {
+  View,
+  ScrollView,
+  Linking,
+  ActivityIndicator,
+  Image,
+} from 'react-native';
 import { Marker } from 'react-native-maps';
 import { Feather, FontAwesome } from '@expo/vector-icons';
 
@@ -10,7 +17,7 @@ import api from '../../services/api';
 import {
   Container,
   ImageContainer,
-  Image,
+  Images,
   DetailContainer,
   Title,
   Description,
@@ -65,8 +72,12 @@ export default function OrphanageDetails() {
 
   if (!orphanage) {
     return (
-      <View>
-        <Description>...Carregando</Description>
+      <View style={{ justifyContent: 'center', flex: 1 }}>
+        <ActivityIndicator
+          size={70}
+          color="#15c3d6"
+          style={{ alignItems: 'center' }}
+        />
       </View>
     );
   }
@@ -75,8 +86,8 @@ export default function OrphanageDetails() {
       <ImageContainer>
         <ScrollView horizontal pagingEnabled>
           {orphanage.images.map(image => (
-            <Image
-              source={{ uri: image.url.replace('localhost', '192.168.0.112') }}
+            <Images
+              source={{ uri: image.url }}
               key={image.id}
               resizeMode="cover"
             />
@@ -139,10 +150,10 @@ export default function OrphanageDetails() {
             </ScheduleText>
           </ScheduleItem>
         </ScheduleContainer>
-        <ContactButton onPress={() => {}}>
+        {/* <ContactButton onPress={() => {}}>
           <FontAwesome name="whatsapp" size={24} color="#FFF" />
           <ContactButtonText>Entrar em contato</ContactButtonText>
-        </ContactButton>
+        </ContactButton> */}
       </DetailContainer>
     </Container>
   );
