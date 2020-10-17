@@ -9,6 +9,7 @@ import OrphanageDetails from './pages/OrphanageDetails';
 import OrphanageData from './pages/CreateOrphanage/OrphanageData';
 import SelectMapPosition from './pages/CreateOrphanage/SelectMapPosition';
 import Header from './components/Header';
+import Boarding from './components/Onboarding';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -21,6 +22,8 @@ export default function Routes() {
           cardStyle: { backgroundColor: '#f2f3f5' },
         }}
       >
+        <Screen name="Onboarding" component={Boarding} />
+
         <Screen name="OrphanagesMap" component={OrphanagesMap} />
         <Screen
           name="OrphanageDetails"
