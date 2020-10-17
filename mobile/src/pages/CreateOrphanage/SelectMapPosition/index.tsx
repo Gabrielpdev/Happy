@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as Location from 'expo-location';
-
+import { ActivityIndicator, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { MapEvent, Marker } from 'react-native-maps';
 
@@ -43,8 +43,12 @@ export default function SelectMapPosition() {
 
   if (!location) {
     return (
-      <Container>
-        <NextButtonText>...Carregando</NextButtonText>
+      <Container style={{ justifyContent: 'center' }}>
+        <ActivityIndicator
+          size={70}
+          color="#15c3d6"
+          style={{ alignItems: 'center' }}
+        />
       </Container>
     );
   }
