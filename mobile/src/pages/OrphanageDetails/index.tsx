@@ -1,20 +1,38 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Image, View, ScrollView, Text, StyleSheet, Dimensions, Linking } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import { View, ScrollView, Linking } from 'react-native';
+import { Marker } from 'react-native-maps';
 import { Feather, FontAwesome } from '@expo/vector-icons';
 
-import mapMarkerImg from '../../images/mapMarker.png';
-import { RectButton } from 'react-native-gesture-handler';
 import { useRoute } from '@react-navigation/native';
+import mapMarkerImg from '../../images/mapMarker.png';
 import api from '../../services/api';
+
+import {
+  Container,
+  ImageContainer,
+  Image,
+  DetailContainer,
+  Title,
+  Description,
+  MapContainer,
+  Map,
+  RoutesContainer,
+  RoutesText,
+  Separator,
+  ScheduleContainer,
+  ScheduleItem,
+  ScheduleText,
+  ContactButton,
+  ContactButtonText,
+} from './styles';
 
 interface OrphanageDetailsRouteParams {
   id: string;
 }
 
-interface OrphanageProps{
-  id:string;
-  name:string;
+interface OrphanageProps {
+  id: string;
+  name: string;
   latitude: number;
   longitude: number;
   about: string;
@@ -24,7 +42,7 @@ interface OrphanageProps{
   images: Array<{
     id: string;
     url: string;
-  }>
+  }>;
 }
 
 export default function OrphanageDetails() {
@@ -36,225 +54,96 @@ export default function OrphanageDetails() {
   useEffect(() => {
     api.get(`/orphanages/${params.id}`).then(response => {
       setOrphanage(response.data);
-    })
-  },[params.id])
+    });
+  }, [params.id]);
 
   const handleOpenGoogleMap = useCallback(() => {
-    Linking.openURL(`https://www.google.com/maps/dir/?api=1&destination=${orphanage?.latitude},${orphanage?.longitude}`)
-  },[])
+    Linking.openURL(
+      `https://www.google.com/maps/dir/?api=1&destination=${orphanage?.latitude},${orphanage?.longitude}`,
+    );
+  }, []);
 
-  if(!orphanage){
+  if (!orphanage) {
     return (
-      <View style={styles.container}>
-        <Text style={styles.description}>...Carregando</Text>
+      <View>
+        <Description>...Carregando</Description>
       </View>
-    )
+    );
   }
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.imagesContainer}>
+    <Container>
+      <ImageContainer>
         <ScrollView horizontal pagingEnabled>
-          {orphanage.images.map( image => (
-            <Image style={styles.image} source={{ uri: image.url.replace('localhost', '192.168.0.112') }} key={image.id} />
+          {orphanage.images.map(image => (
+            <Image
+              source={{ uri: image.url.replace('localhost', '192.168.0.112') }}
+              key={image.id}
+              resizeMode="cover"
+            />
           ))}
-          {/* <Image style={styles.image} source={{ uri: 'https://fmnova.com.br/images/noticias/safe_image.jpg' }} /> */}
-          {/* <Image style={styles.image} source={{ uri: 'https://fmnova.com.br/images/noticias/safe_image.jpg' }} /> */}
         </ScrollView>
-      </View>
+      </ImageContainer>
 
-      <View style={styles.detailsContainer}>
-        <Text style={styles.title}>{orphanage.name}</Text>
-        <Text style={styles.description}>{orphanage.about}</Text>
-      
-        <View style={styles.mapContainer}>
-          <MapView 
+      <DetailContainer>
+        <Title>{orphanage.name}</Title>
+        <Description>{orphanage.about}</Description>
+
+        <MapContainer>
+          <Map
             initialRegion={{
               latitude: Number(orphanage.latitude),
               longitude: Number(orphanage.longitude),
               latitudeDelta: 0.008,
               longitudeDelta: 0.008,
-            }} 
+            }}
             zoomEnabled={false}
             pitchEnabled={false}
             scrollEnabled={false}
             rotateEnabled={false}
-            style={styles.mapStyle}
           >
-            <Marker 
+            <Marker
               icon={mapMarkerImg}
-              coordinate={{ 
+              coordinate={{
                 latitude: Number(orphanage.latitude),
-                longitude: Number(orphanage.longitude)
+                longitude: Number(orphanage.longitude),
               }}
             />
-          </MapView>
+          </Map>
 
-          <RectButton style={styles.routesContainer}  onPress={handleOpenGoogleMap}>
-            <Text style={styles.routesText}>Ver rotas no Google Maps</Text>
-          </RectButton>
-        </View>
-      
-        <View style={styles.separator} />
+          <RoutesContainer onPress={handleOpenGoogleMap}>
+            <RoutesText>Ver rotas no Google Maps</RoutesText>
+          </RoutesContainer>
+        </MapContainer>
 
-        <Text style={styles.title}>Instruções para visita</Text>
-        <Text style={styles.description}>{orphanage.instructions}</Text>
+        <Separator />
 
-        <View style={styles.scheduleContainer}>
-          <View style={[styles.scheduleItem, styles.scheduleItemBlue]}>
+        <Title>Instruções para visita</Title>
+        <Description>{orphanage.instructions}</Description>
+
+        <ScheduleContainer>
+          <ScheduleItem>
             <Feather name="clock" size={40} color="#2AB5D1" />
-            <Text style={[styles.scheduleText, styles.scheduleTextBlue]}>Segunda à Sexta 8h às 18h</Text>
-          </View>
-          {orphanage.open_on_weekends ? (
-            <View style={[styles.scheduleItem, styles.scheduleItemGreen]}>
-              <Feather name="info" size={40} color="#39CC83" />
-              <Text style={[styles.scheduleText, styles.scheduleTextGreen]}>Atendemos fim de semana</Text>
-            </View>
-          ) :(
-            <View style={[styles.scheduleItem, styles.scheduleItemRed]}>
-              <Feather name="info" size={40} color="#ff669d" />
-              <Text style={[styles.scheduleText, styles.scheduleTextRed]}>Não atendemos fim de semana</Text>
-            </View>
-          )}
-        </View>
+            <ScheduleText>Segunda à Sexta 8h às 18h</ScheduleText>
+          </ScheduleItem>
 
-        <RectButton style={styles.contactButton} onPress={() => {}}>
+          <ScheduleItem type={orphanage.open_on_weekends ? 'green' : 'red'}>
+            <Feather
+              name="info"
+              size={40}
+              color={orphanage.open_on_weekends ? '#39CC83' : '#ff669d'}
+            />
+            <ScheduleText type={orphanage.open_on_weekends ? 'green' : 'red'}>
+              {orphanage.open_on_weekends
+                ? 'Atendemos fim de semana'
+                : 'Não atendemos fim de semana'}
+            </ScheduleText>
+          </ScheduleItem>
+        </ScheduleContainer>
+        <ContactButton onPress={() => {}}>
           <FontAwesome name="whatsapp" size={24} color="#FFF" />
-          <Text style={styles.contactButtonText}>Entrar em contato</Text>
-        </RectButton>
-      </View>
-    </ScrollView>
-  )
+          <ContactButtonText>Entrar em contato</ContactButtonText>
+        </ContactButton>
+      </DetailContainer>
+    </Container>
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-
-  imagesContainer: {
-    height: 240,
-  },
-
-  image: {
-    width: Dimensions.get('window').width,
-    height: 240,
-    resizeMode: 'cover',
-  },
-
-  detailsContainer: {
-    padding: 24,
-  },
-
-  title: {
-    color: '#4D6F80',
-    fontSize: 30,
-    fontFamily: 'Nunito_700Bold',
-  },
-
-  description: {
-    fontFamily: 'Nunito_600SemiBold',
-    color: '#5c8599',
-    lineHeight: 24,
-    marginTop: 16,
-  },
-
-  mapContainer: {
-    borderRadius: 20,
-    overflow: 'hidden',
-    borderWidth: 1.2,
-    borderColor: '#B3DAE2',
-    marginTop: 40,
-    backgroundColor: '#E6F7FB',
-  },
-
-  mapStyle: {
-    width: '100%',
-    height: 150,
-  },
-
-  routesContainer: {
-    padding: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  routesText: {
-    fontFamily: 'Nunito_700Bold',
-    color: '#0089a5'
-  },
-
-  separator: {
-    height: 0.8,
-    width: '100%',
-    backgroundColor: '#D3E2E6',
-    marginVertical: 40,
-  },
-
-  scheduleContainer: {
-    marginTop: 24,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-
-  scheduleItem: {
-    width: '48%',
-    padding: 20,
-  },
-
-  scheduleItemBlue: {
-    backgroundColor: '#E6F7FB',
-    borderWidth: 1,
-    borderColor: '#B3DAE2',
-    borderRadius: 20,
-  },
-
-  scheduleItemGreen: {
-    backgroundColor: '#EDFFF6',
-    borderWidth: 1,
-    borderColor: '#A1E9C5',
-    borderRadius: 20,
-  },
-
-  scheduleItemRed: {
-    backgroundColor: '#fef6f9',
-    borderWidth: 1,
-    borderColor: '#ffbcd4',
-    borderRadius: 20,
-  },
-
-  scheduleText: {
-    fontFamily: 'Nunito_600SemiBold',
-    fontSize: 16,
-    lineHeight: 24,
-    marginTop: 20,
-  },
-
-  scheduleTextBlue: {
-    color: '#5C8599'
-  },
-
-  scheduleTextGreen: {
-    color: '#37C77F'
-  },
-
-  scheduleTextRed: {
-    color: '#ff669d'
-  },
-
-  contactButton: {
-    backgroundColor: '#3CDC8C',
-    borderRadius: 20,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 56,
-    marginTop: 40,
-  },
-
-  contactButtonText: {
-    fontFamily: 'Nunito_800ExtraBold',
-    color: '#FFF',
-    fontSize: 16,
-    marginLeft: 16,
-  }
-})
