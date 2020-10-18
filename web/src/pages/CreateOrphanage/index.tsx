@@ -1,12 +1,16 @@
 import React, {
-  ChangeEvent, useCallback, useEffect, useMemo, useState,
+  ChangeEvent, useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { useHistory } from 'react-router-dom';
+import * as Yup from 'yup';
 
 import { FiPlus } from 'react-icons/fi';
 import Leaflet, { LeafletMouseEvent } from 'leaflet';
-import { useTheme } from '../../hooks/Themes';
+import { FormHandles } from '@unform/core';
+import { useTheme } from '../../hooks/themes';
+import { useToast } from '../../hooks/toast';
+import getValidationErros from '../../utils/getValidationErros';
 
 import mapMarkerLight from '../../images/map-marker-light.svg';
 import mapMarkerDark from '../../images/map-marker-dark.svg';
@@ -28,9 +32,12 @@ interface DataProps {
 export default function CreateOrphanage() {
   const history = useHistory();
   const { theme } = useTheme();
+  const { addToast } = useToast();
+
+  const formRef = useRef<FormHandles>(null);
+
   const [coord, setCoord] = useState({ latitude: 0, longitude: 0 });
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
-
   const [open_on_weekends, setOpenOnWeekends] = useState(true);
   const [images, setImages] = useState<File[]>([]);
   const [previewImages, setPreviewImages] = useState<string[]>([]);
@@ -73,32 +80,71 @@ export default function CreateOrphanage() {
     setPreviewImages(selectedImagesPreview);
   }, []);
 
-  const handleSubmit = useCallback((inputData: DataProps) => {
-    const {
+  const handleSubmit = useCallback(async ({
+    name,
+    about,
+    instructions,
+    opening_hours,
+  }: DataProps) => {
+    const { latitude, longitude } = position;
+
+    const formData = {
       name,
+      latitude,
+      longitude,
       about,
       instructions,
       opening_hours,
-    } = inputData;
+      open_on_weekends,
+      images,
+    };
 
-    const data = new FormData();
+    try {
+      formRef.current?.setErrors({});
 
-    data.append('name', name);
-    data.append('latitude', String(position.latitude));
-    data.append('longitude', String(position.longitude));
-    data.append('about', about);
-    data.append('instructions', instructions);
-    data.append('opening_hours', opening_hours);
-    data.append('open_on_weekends', String(open_on_weekends));
-    images.forEach((image) => {
-      data.append('images', image);
-    });
+      const schema = Yup.object().shape({
+        name: Yup.string().required('Nome obrigatório'),
+        latitude: Yup.number().notOneOf([0], 'Localização é obrigatória').required(),
+        longitude: Yup.number().notOneOf([0], 'Localização é obrigatória').required(),
+        about: Yup.string().required('Sobre obrigatório'),
+        instructions: Yup.string().required('Instruções obrigatórios'),
+        opening_hours: Yup.string().required('Horário de atendimento obrigatório'),
+        images: Yup.array().min(1, 'Mínimo de 1 foto'),
+      });
 
-    api.post('/orphanages', data).then((response) => {
-      alert('Cadastro realizado com sucesso !');
+      await schema.validate(formData, {
+        abortEarly: false,
+      });
+
+      const data = new FormData();
+
+      data.append('name', name);
+      data.append('latitude', String(latitude));
+      data.append('longitude', String(longitude));
+      data.append('about', about);
+      data.append('instructions', instructions);
+      data.append('opening_hours', opening_hours);
+      data.append('open_on_weekends', String(open_on_weekends));
+      images.forEach((image) => {
+        data.append('images', image);
+      });
+
+      await api.post('/orphanages', data);
+
+      // alert('Cadastro realizado com sucesso !');
       history.push('/app');
-    });
-  }, [history, images, open_on_weekends, position.latitude, position.longitude]);
+    } catch (err) {
+      const errors = getValidationErros(err);
+
+      formRef.current?.setErrors(errors);
+
+      addToast({
+        type: 'error',
+        title: 'Erro no cadastro',
+        description: 'Ocorreu um erro ao fazer cadastro, tente novamente.',
+      });
+    }
+  }, [history, images, open_on_weekends, position, addToast]);
 
   const mapIcon = useMemo(() => Leaflet.icon({
     iconUrl: theme.title === 'light' ? mapMarkerLight : mapMarkerDark,
@@ -113,10 +159,11 @@ export default function CreateOrphanage() {
       <SideBar />
 
       <main>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} ref={formRef}>
           <fieldset>
             <legend>Dados</legend>
 
+            <span>(Clique no mapa para adicionar uma localização)</span>
             <Map
               center={[coord.latitude, coord.longitude]}
               style={{ width: '100%', height: 280 }}
@@ -141,7 +188,10 @@ export default function CreateOrphanage() {
             </div>
 
             <div className="input-block">
-              <label htmlFor="images">Fotos</label>
+              <label htmlFor="images">
+                Fotos
+                <span>(Mínimo de 1 foto)</span>
+              </label>
 
               <div className="images-container">
                 {previewImages.map((image) => (

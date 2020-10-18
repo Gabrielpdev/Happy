@@ -47,27 +47,29 @@ const Input: React.FC<InputProps> = ({
   }, [fieldName, registerField]);
 
   return (
-    <Container
-      isErrored={!!error}
-      isFilled={isFilled}
-      isFocused={isFocused}
-      data-testid="input-container"
-    >
+    <>
       <label htmlFor={name}>{title}</label>
-      <input
-        id={name}
-        onFocus={handleInputFocus}
-        onBlur={handleInputBlur}
-        defaultValue={defaultValue}
-        ref={inputRef}
-        {...rest}
-      />
-      {error && (
-        <Error title={error}>
-          <FiAlertCircle color="#c53030" size={20} />
-        </Error>
-      )}
-    </Container>
+      <Container
+        isErrored={!!error}
+        isFilled={isFilled}
+        isFocused={isFocused}
+        data-testid="input-container"
+      >
+        <input
+          id={name}
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+          defaultValue={defaultValue}
+          ref={inputRef}
+          {...rest}
+        />
+        {error && (
+          <Error title={error}>
+            <FiAlertCircle color="#c53030" size={20} />
+          </Error>
+        )}
+      </Container>
+    </>
   );
 };
 

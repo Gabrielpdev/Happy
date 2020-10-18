@@ -8,29 +8,33 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-    label {
-      display: flex;
-      color: var(--fnt-base);
-      margin-bottom: 8px;
-      line-height: 24px;
-    }
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--bg-border);
+  border-radius: 20px;
+  outline: none;
+  height: 64px;
+  padding: 0 16px;
+  
+  display: flex;
 
-    input {
-      width: 100%;
-      background: var(--bg-input);
-      border: 1px solid var(--bg-border);
-      border-radius: 20px;
-      outline: none;
-      color: var(--fnt-title);
-      height: 64px;
-      padding: 0 16px;
-    }
+  input{
+    color: var(--fnt-title);
+    width: 100%;
+    border: 0;
+    background: none;
+  }
+
+  label {
+    color: var(--fnt-base);
+    margin-bottom: 8px;
+    line-height: 24px;
   }
 `;
 
 export const Error = styled(Tooltip)`
   height: 20px;
-  margin-left: 16px;
+  margin: auto  0 auto 16px;
   svg {
     margin: 0;
   }

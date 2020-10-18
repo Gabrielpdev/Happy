@@ -8,34 +8,35 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-    label {
-      display: flex;
-      color: var(--fnt-base);
-      margin-bottom: 8px;
-      line-height: 24px;
-    }
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--bg-border);
+  border-radius: 20px;
+  outline: none;
+  color: var(--fnt-title);
 
-    span {
-      font-size: 14px;
-      color: var(--fnt-base);
-      margin-left: 24px;
-      line-height: 24px;
-    }
+  padding: 16px;
+  display:flex;
+  
+  label {
+    display: flex;
+    color: var(--fnt-base);
+    margin-bottom: 8px;
+    line-height: 24px;
+  }
 
-    textarea {
-      width: 100%;
-      background: var(--bg-input);
-      border: 1px solid var(--bg-border);
-      border-radius: 20px;
-      outline: none;
-      color: var(--fnt-title);
 
-      min-height: 120px;
-      max-height: 240px;
-      resize: vertical;
-      padding: 16px;
-      line-height: 28px;
-    }
+  textarea {
+    width: 100%;
+    max-width: ${(props) => (props.isErrored ? '464px' : '500px')};
+    border: 0;
+    background: none;
+
+    min-height: 120px;
+    max-height: 240px;
+    resize: vertical;
+    line-height: 28px;
+  
   }
 `;
 

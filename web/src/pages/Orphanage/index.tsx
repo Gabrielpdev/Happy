@@ -1,17 +1,17 @@
-import React, {useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from 'react';
 // import { FaWhatsapp } from "react-icons/fa";
-import { FiClock, FiInfo } from "react-icons/fi";
-import { Map, Marker, TileLayer } from "react-leaflet";
+import { FiClock, FiInfo } from 'react-icons/fi';
+import { Map, Marker, TileLayer } from 'react-leaflet';
 import Leaflet from 'leaflet';
-import api from "../../services/api";
+import { useParams } from 'react-router-dom';
+import api from '../../services/api';
 
-import SideBar from "../../components/SideBar";
-import { useTheme } from "../../hooks/Themes";
+import SideBar from '../../components/SideBar';
+import { useTheme } from '../../hooks/themes';
 import mapMarkerLight from '../../images/map-marker-light.svg';
 import mapMarkerDark from '../../images/map-marker-dark.svg';
-import { useParams } from "react-router-dom";
 
-import { Container, Detail,Content } from './styles';
+import { Container, Detail, Content } from './styles';
 
 interface OrphanageProps {
   name: string,
@@ -34,29 +34,27 @@ interface RouteParams {
 export default function Orphanage() {
   const params = useParams<RouteParams>();
   const { theme } = useTheme();
-  const [ orphanage, setOrphanage ] = useState<OrphanageProps>(); 
-  const [ activeIndex, setActiveIndex ] = useState(0); 
+  const [orphanage, setOrphanage] = useState<OrphanageProps>();
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const { id } = params;
 
   useEffect(() => {
-    api.get(`/orphanages/${id}`).then(response => {
+    api.get(`/orphanages/${id}`).then((response) => {
       setOrphanage(response.data);
-    })
-  },[id])
+    });
+  }, [id]);
 
-  const mapIcon = useMemo(() => {
-    return Leaflet.icon({
-     iconUrl: theme.title === 'light' ? mapMarkerLight : mapMarkerDark,
-   
-     iconSize: [58, 68],
-     iconAnchor: [29, 68],
-     popupAnchor: [170, 2]
-   })
-  },[theme]);
+  const mapIcon = useMemo(() => Leaflet.icon({
+    iconUrl: theme.title === 'light' ? mapMarkerLight : mapMarkerDark,
 
-  if (!orphanage){
-    return <p>Carregando...</p>
+    iconSize: [58, 68],
+    iconAnchor: [29, 68],
+    popupAnchor: [170, 2],
+  }), [theme]);
+
+  if (!orphanage) {
+    return <p>Carregando...</p>;
   }
 
   return (
@@ -68,21 +66,21 @@ export default function Orphanage() {
           <img src={orphanage.images[activeIndex].url} alt={orphanage.name} />
 
           <div className="images">
-            {orphanage.images.map( (image, index) => (
-              <button className={activeIndex === index ? 'active' : ''} type="button" key={image.id} onClick={() => {setActiveIndex(index)}} >
+            {orphanage.images.map((image, index) => (
+              <button className={activeIndex === index ? 'active' : ''} type="button" key={image.id} onClick={() => { setActiveIndex(index); }}>
                 <img src={image.url} alt="Lar das meninas" />
               </button>
             ))}
           </div>
-          
+
           <Content>
             <h1>{orphanage.name}</h1>
             <p>{orphanage.about}</p>
 
             <div className="map-container">
-              <Map 
-                center={[orphanage.latitude,orphanage.longitude]} 
-                zoom={16} 
+              <Map
+                center={[orphanage.latitude, orphanage.longitude]}
+                zoom={16}
                 style={{ width: '100%', height: 280 }}
                 dragging={false}
                 touchZoom={false}
@@ -90,14 +88,14 @@ export default function Orphanage() {
                 scrollWheelZoom={false}
                 doubleClickZoom={false}
               >
-                <TileLayer 
+                <TileLayer
                   url={`https://api.mapbox.com/styles/v1/mapbox/${theme.title}-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
                 />
-                <Marker interactive={false} icon={mapIcon} position={[orphanage.latitude,orphanage.longitude]} />
+                <Marker interactive={false} icon={mapIcon} position={[orphanage.latitude, orphanage.longitude]} />
               </Map>
 
               <footer>
-                <a target='_blank' rel='noopener noreferrer' href={`https://www.google.com/maps/dir/?api=1&destination=${orphanage.latitude},${orphanage.longitude}`}>Ver rotas no Google Maps</a>
+                <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${orphanage.latitude},${orphanage.longitude}`}>Ver rotas no Google Maps</a>
               </footer>
             </div>
 
@@ -109,20 +107,26 @@ export default function Orphanage() {
             <div className="open-details">
               <div className="hour">
                 <FiClock size={32} color="#15B6D6" />
-                Segunda à Sexta <br />
+                Segunda à Sexta
+                {' '}
+                <br />
                 {orphanage.opening_hours}
               </div>
 
               {orphanage.open_on_weekends ? (
                 <div className="open-on-weekends">
                   <FiInfo size={32} color="#39CC83" />
-                  Atendemos <br />
+                  Atendemos
+                  {' '}
+                  <br />
                   fim de semana
                 </div>
               ) : (
                 <div className="open-on-weekends dont-open">
                   <FiInfo size={32} color="#ff669d" />
-                  Não atendemos <br />
+                  Não atendemos
+                  {' '}
+                  <br />
                   fim de semana
                 </div>
 

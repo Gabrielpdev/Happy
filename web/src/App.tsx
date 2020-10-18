@@ -1,11 +1,11 @@
 import React from 'react';
 import Routes from './routes';
-import { ThemesProvider } from './hooks/Themes';
+import { ThemesProvider } from './hooks/themes';
 
 function App() {
   return (
     <ThemesProvider>
-      <Routes/>
+      <Routes />
     </ThemesProvider>
   );
 }

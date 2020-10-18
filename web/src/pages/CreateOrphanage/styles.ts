@@ -22,14 +22,24 @@ export const Form = styled(F)`
   overflow: hidden;
 
   .leaflet-container{
-    margin-bottom: 40px;
     border: 1px solid var(--bg-border);
     border-radius: 20px;
+    margin-bottom: 40px;
   }
+
 
   fieldset {
     border: 0;
     
+  > span {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      color: var(--fnt-base);
+      line-height: 24px;
+      text-align: right;
+    }
+
     & + fieldset {
       margin-top: 80px;
     }
@@ -58,6 +68,13 @@ export const Form = styled(F)`
       color: var(--fnt-base);
       margin-bottom: 8px;
       line-height: 24px;
+
+      > span {
+      font-size: 14px;
+      color: var(--fnt-base);
+      margin-left: 24px;
+      line-height: 24px;
+      }
     }
 
     .images-container {

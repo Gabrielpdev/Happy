@@ -49,30 +49,32 @@ const TextArea: React.FC<InputProps> = ({
   }, [fieldName, registerField]);
 
   return (
-    <Container
-      isErrored={!!error}
-      isFilled={isFilled}
-      isFocused={isFocused}
-      data-testid="input-container"
-    >
+    <>
       <label htmlFor={name}>
         {title}
         <span>{subtitle}</span>
       </label>
-      <textarea
-        id={name}
-        onFocus={handleInputFocus}
-        onBlur={handleInputBlur}
-        defaultValue={defaultValue}
-        ref={inputRef}
-        {...rest}
-      />
-      {error && (
+      <Container
+        isErrored={!!error}
+        isFilled={isFilled}
+        isFocused={isFocused}
+        data-testid="input-container"
+      >
+        <textarea
+          id={name}
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+          defaultValue={defaultValue}
+          ref={inputRef}
+          {...rest}
+        />
+        {error && (
         <Error title={error}>
           <FiAlertCircle color="#c53030" size={20} />
         </Error>
-      )}
-    </Container>
+        )}
+      </Container>
+    </>
   );
 };
 
