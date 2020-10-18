@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form as F } from '@unform/web';
 
 export const Container = styled.div`
   display: flex;
@@ -8,7 +9,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Form = styled.form`
+export const Form = styled(F)`
   width: 700px;
   margin: 64px auto;
 
@@ -48,7 +49,6 @@ export const Form = styled.form`
   }
 
   .input-block{
-
     & + .input-block {
       margin-top: 24px;
     }
@@ -58,35 +58,6 @@ export const Form = styled.form`
       color: var(--fnt-base);
       margin-bottom: 8px;
       line-height: 24px;
-    }
-
-    span {
-      font-size: 14px;
-      color: var(--fnt-base);
-      margin-left: 24px;
-      line-height: 24px;
-    }
-
-    input,textarea {
-      width: 100%;
-      background: var(--bg-input);
-      border: 1px solid var(--bg-border);
-      border-radius: 20px;
-      outline: none;
-      color: var(--fnt-title);
-    }
-
-    input {
-      height: 64px;
-      padding: 0 16px;
-    }
-
-    textarea {
-      min-height: 120px;
-      max-height: 240px;
-      resize: vertical;
-      padding: 16px;
-      line-height: 28px;
     }
 
     .images-container {

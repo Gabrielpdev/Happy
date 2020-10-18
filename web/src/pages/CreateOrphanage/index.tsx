@@ -1,5 +1,5 @@
 import React, {
-  ChangeEvent, FormEvent, useCallback, useEffect, useMemo, useState,
+  ChangeEvent, useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { useHistory } from 'react-router-dom';
@@ -12,28 +12,33 @@ import mapMarkerLight from '../../images/map-marker-light.svg';
 import mapMarkerDark from '../../images/map-marker-dark.svg';
 
 import SideBar from '../../components/SideBar';
+import Input from '../../components/Input';
+import TextArea from '../../components/TextArea';
 import api from '../../services/api';
 
 import { Container, Form } from './styles';
 
+interface DataProps {
+  about: string;
+  instructions: string;
+  name: string;
+  opening_hours: string;
+}
+
 export default function CreateOrphanage() {
   const history = useHistory();
   const { theme } = useTheme();
-  const [ coord, setCoord] = useState({ latitude: 0, longitude: 0 });
+  const [coord, setCoord] = useState({ latitude: 0, longitude: 0 });
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
 
-  const [name, setName] = useState('');
-  const [about, setAbout] = useState('');
-  const [instructions, setInstructions] = useState('');
-  const [opening_hours, setOpeningHours] = useState('');
   const [open_on_weekends, setOpenOnWeekends] = useState(true);
   const [images, setImages] = useState<File[]>([]);
   const [previewImages, setPreviewImages] = useState<string[]>([]);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
+      (response) => {
+        const { latitude, longitude } = response.coords;
 
         setCoord({ latitude, longitude });
       },
@@ -42,8 +47,8 @@ export default function CreateOrphanage() {
       },
       {
         timeout: 30000,
-      }
-    )
+      },
+    );
   }, []);
 
   const handleMapClick = useCallback((event: LeafletMouseEvent) => {
@@ -68,8 +73,13 @@ export default function CreateOrphanage() {
     setPreviewImages(selectedImagesPreview);
   }, []);
 
-  const handleSubmit = useCallback((event: FormEvent) => {
-    event.preventDefault();
+  const handleSubmit = useCallback((inputData: DataProps) => {
+    const {
+      name,
+      about,
+      instructions,
+      opening_hours,
+    } = inputData;
 
     const data = new FormData();
 
@@ -88,7 +98,7 @@ export default function CreateOrphanage() {
       alert('Cadastro realizado com sucesso !');
       history.push('/app');
     });
-  }, [about, history,images,instructions, name, open_on_weekends, opening_hours, position.latitude, position.longitude]);
+  }, [history, images, open_on_weekends, position.latitude, position.longitude]);
 
   const mapIcon = useMemo(() => Leaflet.icon({
     iconUrl: theme.title === 'light' ? mapMarkerLight : mapMarkerDark,
@@ -123,17 +133,11 @@ export default function CreateOrphanage() {
             </Map>
 
             <div className="input-block">
-              <label htmlFor="name">Nome</label>
-              <input id="name" value={name} onChange={(e) => setName(e.target.value)} />
+              <Input name="name" title="Nome" />
             </div>
 
             <div className="input-block">
-              <label htmlFor="about">
-                Sobre
-                {' '}
-                <span>Máximo de 300 caracteres</span>
-              </label>
-              <textarea id="name" maxLength={300} value={about} onChange={(e) => setAbout(e.target.value)} />
+              <TextArea name="about" title="Sobre" subtitle="Máximo de 300 caracteres" maxLength={300} />
             </div>
 
             <div className="input-block">
@@ -141,7 +145,7 @@ export default function CreateOrphanage() {
 
               <div className="images-container">
                 {previewImages.map((image) => (
-                  <img src={image} key={image} alt={name} />
+                  <img src={image} key={image} alt={image} />
                 ))}
 
                 <label htmlFor="images[]" className="new-image">
@@ -158,13 +162,11 @@ export default function CreateOrphanage() {
             <legend>Visitação</legend>
 
             <div className="input-block">
-              <label htmlFor="instructions">Instruções</label>
-              <textarea id="instructions" value={instructions} onChange={(e) => setInstructions(e.target.value)} />
+              <Input name="instructions" title="Instruções" />
             </div>
 
             <div className="input-block">
-              <label htmlFor="opening_hours">Horário de funcionamento</label>
-              <input id="opening_hours" value={opening_hours} onChange={(e) => setOpeningHours(e.target.value)} />
+              <Input name="opening_hours" title="Horário de funcionamento" />
             </div>
 
             <div className="input-block">
