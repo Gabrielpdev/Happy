@@ -54,13 +54,15 @@ que uma criança pode ganhar é o seu tempo e sua atenção a ela.<br/>
 
 <span align="center">
 	<h2>Desktop</h2>
-	<img alt="Happy" title="#Happy" src=".github/web.gif"/>
+	<img alt="Happy" title="#Happy" src=".github/web.gif" height="350px" />
+    	<img alt="Happy" title="#Happy" src=".github/gif-mobile.gif" height="350px" />
 </span>
 
 ## ➕ Funcionalidades Adicionais <a name = "additional"></a>
 
-Foi Adicionado styled-components e o tema dark, com o uso do useContext e a criação do próprio hook
-para facilitar a chamada da troca de tema em qualquer lugar na aplicação.
+- Styled-Components
+- Troca para dark theme
+- Tela de Onboarding
 
 ## 🏁 Iniciando <a name = "getting_started"></a>
 
