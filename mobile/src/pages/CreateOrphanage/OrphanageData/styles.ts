@@ -1,4 +1,5 @@
 import {
+  BorderlessButton,
   RectButton,
   ScrollView,
   TouchableOpacity,
@@ -46,7 +47,7 @@ export const UploadedImage = styled.Image`
   margin-bottom: 32px;
   margin-right: 8px;
 `;
-export const ImagesInput = styled(TouchableOpacity)`
+export const ImagesInput = styled(BorderlessButton)`
   background: rgba(255, 255, 255, 0.5);
   border: 1.4px dashed #96d2f0;
   border-radius: 20px;
