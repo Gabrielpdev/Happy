@@ -61,8 +61,8 @@ que uma criança pode ganhar é o seu tempo e sua atenção a ela.<br/>
 ## ➕ Funcionalidades Adicionais <a name = "additional"></a>
 
 - Styled-Components
-- Troca para dark theme
-- Tela de Onboarding
+- Dark theme
+- Onboarding
 - Unform
 - Validação de dados
 
