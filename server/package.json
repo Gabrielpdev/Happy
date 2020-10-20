@@ -5,11 +5,11 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "tsnd --transpile-only --ignore-watch node_modules src/server.ts",
+    "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
     "build": "tsc",
     "typeorm": "tsnd ./node_modules/typeorm/cli.js",
-    "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
-    "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed"
+    "dev": "tsnd --transpile-only --ignore-watch node_modules src/server.ts",
+    "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -17,6 +17,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.2",
     "pg": "^8.4.1",
     "typeorm": "^0.2.28",
@@ -29,6 +30,7 @@
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.8",
     "@types/express": "^4.17.8",
+    "@types/jsonwebtoken": "^8.5.0",
     "@types/multer": "^1.4.4",
     "@types/uuid": "^8.3.0",
     "@types/yup": "^0.29.8",

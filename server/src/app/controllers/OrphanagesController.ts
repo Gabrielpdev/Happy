@@ -3,7 +3,7 @@ import { v4 } from 'uuid';
 import { getRepository } from 'typeorm';
 import * as Yup from 'yup';
 
-import orphanageView from '../views/Orphanages_view';
+import orphanageView from '../views/OrphanagesView';
 import Orphanage from '../models/Orphanage';
 
 export default {

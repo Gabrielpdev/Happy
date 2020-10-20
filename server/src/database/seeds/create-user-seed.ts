@@ -11,9 +11,9 @@ export default class CreateUsers implements Seeder {
       .into('users')
       .values({
         id: v4(),
-        name: 'Admin Happy',
-        email: 'admi@happy.com',
-        password: `${await hash('admin123', 8)}`,
+        name: process.env.USER_NAME,
+        email: process.env.USER_EMAIL,
+        password: `${await hash(`${process.env.USER_PASS}`, 8)}`,
       })
       .execute();
   }
