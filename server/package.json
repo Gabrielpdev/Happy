@@ -5,20 +5,25 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsnd --transpile-only --ignore-watch node_modules src/server.ts",
-    "typeorm": "tsnd ./node_modules/typeorm/cli.js"
+    "typeorm": "tsnd ./node_modules/typeorm/cli.js",
+    "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
+    "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "multer": "^1.4.2",
     "pg": "^8.4.1",
     "typeorm": "^0.2.28",
+    "typeorm-seeding": "^1.6.1",
     "typescript": "^4.0.3",
     "uuidv4": "^6.2.4",
     "yup": "^0.29.3"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.8",
     "@types/express": "^4.17.8",
     "@types/multer": "^1.4.4",
