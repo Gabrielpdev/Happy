@@ -54,7 +54,7 @@ que uma criança pode ganhar é o seu tempo e sua atenção a ela.<br/>
 
 <span align="center">
 	<h2>Preview</h2>
-	<img alt="Happy" title="#Happy" src=".github/web.gif" height="340px" />
+	<img alt="Happy" title="#Happy" src=".github/web.gif" width="750px" />
     	<img alt="Happy" title="#Happy" src=".github/gif-mobile.gif" height="340px" />
 </span>
 
