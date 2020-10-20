@@ -53,16 +53,18 @@ mais próximos de sua localização. Como a aplicação foi feita nos dias das c
 que uma criança pode ganhar é o seu tempo e sua atenção a ela.<br/> 
 
 <span align="center">
-	<h2>Desktop</h2>
-	<img alt="Happy" title="#Happy" src=".github/web.gif" height="350px" />
-    	<img alt="Happy" title="#Happy" src=".github/gif-mobile.gif" height="350px" />
+	<h2>Preview</h2>
+	<img alt="Happy" title="#Happy" src=".github/web.gif" height="340px" />
+    	<img alt="Happy" title="#Happy" src=".github/gif-mobile.gif" height="340px" />
 </span>
 
 ## ➕ Funcionalidades Adicionais <a name = "additional"></a>
 
 - Styled-Components
-- Troca para dark theme
-- Tela de Onboarding
+- Dark theme
+- Onboarding
+- Unform
+- Validação de dados
 
 ## 🏁 Iniciando <a name = "getting_started"></a>
 
