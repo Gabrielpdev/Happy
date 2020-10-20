@@ -65,6 +65,9 @@ que uma criança pode ganhar é o seu tempo e sua atenção a ela.<br/>
 - Onboarding
 - Unform
 - Validação de dados
+- Criação de usuário
+- Autenticação de usuário
+- Seed para usuário padrão
 
 ## 🏁 Iniciando <a name = "getting_started"></a>
 
@@ -79,22 +82,23 @@ Instruções de como acessar as rotas e instalação.
 Entrando no backend <br/> <br/>
 2. ``cd Happy``<br/> 
 3. ``cd server``<br/> 
-4. Configure o arquivo ``ormconfig.json`` de acordo com seu banco de dados <br/> 
+4. Crie um arquivo ``.env`` baseado no ``.env.example`` e configure de acordo com a sua máquina. <br/> 
 5. ``yarn typeorm migration:run`` <br/> 
-6. ``yarn dev`` <br/> 
+6. ``yarn seed:run`` <br/> 
+7. ``yarn dev`` <br/> 
 
 #### 💻 Iniciando com o Front-end
 
-7. ``cd web`` <br/> 
-8. ``yarn start`` <br/> 
+8. ``cd web`` <br/> 
+9. ``yarn start`` <br/> 
 
 #### 📱 Iniciando com o Mobile
 
-9. Instalar o aplicativo Expo no seu celular <br/> 
-10. ``cd mobile`` <br/> 
-11. ``yarn start`` <br/> 
-12. Escanear o QRCode disponibilizado na tela. <br/> 
-13. App pronto para uso ! <br/> 
+10. Instalar o aplicativo Expo no seu celular <br/> 
+12. ``cd mobile`` <br/> 
+13. ``yarn start`` <br/> 
+14. Escanear o QRCode disponibilizado na tela. <br/> 
+15. App pronto para uso ! <br/> 
 
 
 ## ⛏️ Tecnologias Utilizadas <a name = "built_using"></a>
