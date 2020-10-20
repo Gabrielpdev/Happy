@@ -44,6 +44,11 @@ export default class CreateOrphanages1602609944258
             type: 'boolean',
             default: false,
           },
+          {
+            name: 'is_pending',
+            type: 'boolean',
+            default: true,
+          },
         ],
       }),
     );
