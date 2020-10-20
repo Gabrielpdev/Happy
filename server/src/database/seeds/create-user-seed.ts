@@ -1,7 +1,7 @@
 import { Connection } from 'typeorm';
 import { Factory, Seeder } from 'typeorm-seeding';
 import { hash } from 'bcryptjs';
-import { uuid } from 'uuidv4';
+import { v4 } from 'uuid';
 
 export default class CreateUsers implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
@@ -10,7 +10,7 @@ export default class CreateUsers implements Seeder {
       .insert()
       .into('users')
       .values({
-        id: uuid(),
+        id: v4(),
         name: 'Admin Happy',
         email: 'admi@happy.com',
         password: `${await hash('admin123', 8)}`,

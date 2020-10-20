@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { uuid } from 'uuidv4';
+import { v4 } from 'uuid';
 import { getRepository } from 'typeorm';
 import * as Yup from 'yup';
 
@@ -44,11 +44,11 @@ export default {
 
     const requestImages = request.files as Express.Multer.File[];
     const images = requestImages.map(image => {
-      return { id: uuid(), path: image.filename };
+      return { id: v4(), path: image.filename };
     });
 
     const data = {
-      id: uuid(),
+      id: v4(),
       name,
       latitude,
       longitude,
