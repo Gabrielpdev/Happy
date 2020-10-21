@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@types/jsonwebtoken": "^8.5.0",
-    "jsonwebtoken": "^8.5.1"
-  }
-}

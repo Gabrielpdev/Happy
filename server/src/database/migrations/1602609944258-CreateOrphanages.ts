@@ -32,6 +32,10 @@ export default class CreateOrphanages1602609944258
             type: 'text',
           },
           {
+            name: 'whatsapp',
+            type: 'varchar',
+          },
+          {
             name: 'instructions',
             type: 'text',
           },
