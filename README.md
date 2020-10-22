@@ -68,6 +68,8 @@ que uma criança pode ganhar é o seu tempo e sua atenção a ela.<br/>
 - Criação de usuário
 - Autenticação de usuário
 - Seed para usuário padrão
+- Atualização de orfanatos
+- Exclusão de orfanatos
 
 ## 🏁 Iniciando <a name = "getting_started"></a>
 
