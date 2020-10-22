@@ -157,8 +157,6 @@ export default {
       abortEarly: false,
     });
 
-    console.log(formattedImages);
-
     formattedImages.forEach(async image => {
       await imagesRepository.create(image);
       await imagesRepository.save(image);
@@ -184,5 +182,25 @@ export default {
       return response.status(201).json();
     }
     return response.status(403).json({ message: 'Orphanage does not exists' });
+  },
+
+  async delete(request: Request, response: Response) {
+    const { id } = request.params;
+
+    const orphanageRepository = getRepository(Orphanage);
+
+    const orphanage = await orphanageRepository.findOne(id);
+
+    if (!orphanage) {
+      return response
+        .status(403)
+        .json({ message: 'Orphanage does not exists' });
+    }
+
+    await orphanageRepository.remove(orphanage);
+
+    return response
+      .status(201)
+      .json({ message: 'Orfanato deletado com sucesso' });
   },
 };
