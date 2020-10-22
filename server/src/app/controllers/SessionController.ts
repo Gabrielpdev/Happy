@@ -33,7 +33,7 @@ export default {
     }
 
     if (!(await compare(password, user.password))) {
-      return response.status(401).json({ error: 'Password does not corect' });
+      return response.status(401).json({ error: 'Password does not correct' });
     }
 
     const token = sign({ userId: user.id }, authConfig.jwt.secret, {

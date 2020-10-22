@@ -2,30 +2,12 @@ import { Request, Response } from 'express';
 import { v4 } from 'uuid';
 import { getRepository } from 'typeorm';
 import * as Yup from 'yup';
+import { compare, hash } from 'bcryptjs';
 
-import { hash } from 'bcryptjs';
 import userView from '../views/UsersView';
 import User from '../models/User';
 
 export default {
-  async index(request: Request, response: Response) {
-    const userRepository = getRepository(User);
-
-    const users = await userRepository.find();
-
-    return response.json(userView.renderMany(users));
-  },
-
-  async show(request: Request, response: Response) {
-    const { id } = request.params;
-
-    const userRepository = getRepository(User);
-
-    const user = await userRepository.findOneOrFail(id);
-
-    return response.json(userView.render(user));
-  },
-
   async create(request: Request, response: Response) {
     const { name, email, password } = request.body;
 
@@ -57,6 +39,62 @@ export default {
     }
 
     const user = userRepository.create(data);
+
+    await userRepository.save(user);
+
+    return response.status(201).json(userView.render(user));
+  },
+
+  async update(request: Request, response: Response) {
+    const {
+      name,
+      email,
+      old_password,
+      password,
+      password_confirmation,
+    } = request.body;
+
+    const { id } = request.user;
+
+    const userRepository = getRepository(User);
+
+    const user = await userRepository.findOne(id);
+
+    if (!user) {
+      return response.status(400).json({ message: 'User does not exists' });
+    }
+
+    const checkEmail = await userRepository.findOne({ where: { email } });
+
+    if (checkEmail?.email && checkEmail.id === id) {
+      return response.status(400).json({ message: 'Email already exists' });
+    }
+
+    user.name = name;
+    user.email = email;
+
+    if (password && !old_password) {
+      return response.status(400).json({
+        message: 'You need to inform the old password to set the new password',
+      });
+    }
+
+    if (password && old_password) {
+      if (password !== password_confirmation) {
+        return response.status(400).json({
+          message: 'Password and password confirmation does not match',
+        });
+      }
+
+      const checkOldPassword = await compare(old_password, user.password);
+
+      if (!checkOldPassword) {
+        return response.status(400).json({
+          message: 'Old password does not match',
+        });
+      }
+      user.password = await hash(password, 8);
+    }
 
     await userRepository.save(user);
 

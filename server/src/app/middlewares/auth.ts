@@ -27,7 +27,7 @@ export default async (
 
     const { userId } = decoded as ITokenPayload;
 
-    request.user.id = userId;
+    request.user = { id: userId };
 
     return next();
   } catch (err) {
