@@ -30,7 +30,7 @@ export default class CreateUsers1603214480001 implements MigrationInterface {
           },
           {
             name: 'password_token_expiration',
-            type: 'date',
+            type: 'timestamp',
             isNullable: true,
           },
         ],
