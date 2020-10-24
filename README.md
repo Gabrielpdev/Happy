@@ -23,9 +23,9 @@
   </a>
 </p>
 
-<h2 align="center">
+<p align="center">
     <img alt="Happy" title="#Happy" src=".github/HappyWeb.png" width="350px" />
-</h2>
+</p>
 
 
 ## 📝 Conteúdo
