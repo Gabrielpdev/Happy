@@ -70,6 +70,7 @@ que uma criança pode ganhar é o seu tempo e sua atenção a ela.<br/>
 - Seed para usuário padrão
 - Atualização de orfanatos
 - Exclusão de orfanatos
+- Envio de email de recuperação de senha
 
 ## 🏁 Iniciando <a name = "getting_started"></a>
 
@@ -111,6 +112,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - ⚙ [TypeORM][typeorm]
 - 🐘 [Postgres][postgres]
 - ✅ [Yup][yup]
+- 👄 [Handlebars][handlebars]
 - ⚛️ [React][reactjs]
 - ⚛️ [React Native][reactNative]
 - 🔼 [Expo][expo]
@@ -130,12 +132,10 @@ Feito com ❤️ por Gabriel Pereira 👋🏽 [Entre em contato!](https://www.li
 [expo]: https://expo.io/
 [expo-maps]: https://docs.expo.io/versions/latest/sdk/map-view/
 [image-picker]: https://docs.expo.io/versions/latest/sdk/imagepicker/
-[image-picker]: https://docs.expo.io/versions/latest/sdk/imagepicker/
 [handlebars]: https://handlebarsjs.com/
 [postgres]: https://www.postgresql.org/
 [typeorm]: https://typeorm.io/#/
 [nodejs]: https://nodejs.org/en/
-[redis]: https://redis.io/
 [yup]: https://github.com/jquense/yup
 [typescript]: https://www.typescriptlang.org/
 [reactjs]: https://reactjs.org
