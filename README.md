@@ -1,6 +1,6 @@
-<h2 align="center">
+<p align="center">
     <img alt="Happy" title="#Happy" src=".github/logo.svg" width="350px" />
-</h2>
+</p>
   
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Gabrielpdev/Happy?color=%2304D361">
@@ -24,7 +24,7 @@
 </p>
 
 <h2 align="center">
-    <img alt="Happy" title="#Happy" src=".github/HappyWeb.png" width="450px" />
+    <img alt="Happy" title="#Happy" src=".github/HappyWeb.png" width="350px" />
 </h2>
 
 
