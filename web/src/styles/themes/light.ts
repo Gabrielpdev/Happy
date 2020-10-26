@@ -18,11 +18,17 @@ export default {
     button_hover_light: '#96feff',
     confirm: '#3CDC8C',
     confirm_text: '#fff',
-    confirm_hover: '#36CF82'
+    confirm_hover: '#36CF82',
+    btn_access: '#12D4E0',
+    btn_access_hover: '#96FEFF',
+    btn_login: '#ebf2f5',
   },
-  font:{
+  font: {
     primary: '#0089a5',
     title: '#5C8599',
     base: '#8FA7B3',
-  }
+    text_access: '#fff',
+    text_access_hover: '#15C3D6',
+    text_login: '#15c3d6',
+  },
 };

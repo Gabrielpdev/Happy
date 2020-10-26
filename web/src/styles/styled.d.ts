@@ -21,12 +21,18 @@ declare module 'styled-components'{
       button_hover_light: string;
       confirm: string;
       confirm_text: string;
-      confirm_hover: srting;
+      confirm_hover: string;
+      btn_access: string;
+      btn_access_hover: string;
+      btn_login: string;
     },
     font: {
       primary: string;
       title:string;
       base:string;
+      text_access: string,
+      text_access_hover: string,
+      text_login: string,
     }
   }
 }

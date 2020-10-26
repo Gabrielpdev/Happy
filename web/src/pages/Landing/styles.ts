@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -57,9 +56,15 @@ export const RightSide = styled.div`
   display: flex;
   align-items:center;
 
-  .location{
+  .access{
     right: 0;
     top: 0;
+    text-decoration: none;
+    background: var(--btn-access);
+    color: var(--text-access);
+
+    padding: 13px 40px;
+    border-radius: 20px;
 
     font-size: 24px;
     line-height: 24px;
@@ -69,7 +74,15 @@ export const RightSide = styled.div`
 
     text-align: right;
 
+    transition: 0.3s background;
+
+    &:hover{
+      background: var(--btn-access-hover);
+      color: var(--text-access-hover);
+    }
+
     strong{
+      text-align: center;
       font-weight: 800;
     }
   }
@@ -80,7 +93,6 @@ export const RightSide = styled.div`
     background: none;
   }
 `;
-
 
 export const FooterContent = styled.div`
   display:flex;

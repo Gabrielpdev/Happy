@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiArrowRight, FiSun, FiMoon } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useTheme } from '../../hooks/themes';
 
 import logoLight from '../../images/logo-light.svg';
@@ -14,6 +14,7 @@ import {
 
 function Landing() {
   const { ToggleTheme, theme } = useTheme();
+  const history = useHistory();
 
   return (
     <Container>
@@ -26,10 +27,9 @@ function Landing() {
             <img src={logoDark} alt="Happy" />
           )}
           <RightSide>
-            <div className="location">
-              <strong>Mantena</strong>
-              <span>Minas Gerais</span>
-            </div>
+            <Link className="access" to="/login">
+              <strong>Acesso Restrito</strong>
+            </Link>
             <button type="button" onClick={ToggleTheme}>
               {theme.title === 'light' ? (
                 <FiMoon size={40} color="#fff" />

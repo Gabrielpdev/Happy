@@ -10,6 +10,8 @@ import 'leaflet/dist/leaflet.css';
 import light from './styles/themes/light';
 
 import Landing from './pages/Landing';
+import SignIn from './pages/SignIn';
+
 import OrphanagesMap from './pages/OrphanagesMap';
 import Orphanage from './pages/Orphanage';
 import CreateOrphanage from './pages/CreateOrphanage';
@@ -25,6 +27,7 @@ function Routes() {
           <Switch>
             <Route path="/" exact component={Landing} />
             <Route path="/app" component={OrphanagesMap} />
+            <Route path="/login" component={SignIn} />
 
             <Route path="/orphanage/create" component={CreateOrphanage} />
             <Route path="/orphanage/:id" component={Orphanage} />
