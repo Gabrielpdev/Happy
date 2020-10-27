@@ -1,9 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { FormHandles } from '@unform/core';
 import { FiArrowLeft, FiSun, FiMoon } from 'react-icons/fi';
 import { Link, useHistory } from 'react-router-dom';
+import * as Yup from 'yup';
+
 import { useTheme } from '../../hooks/themes';
 import Input from '../../components/Input';
+import getValidationErros from '../../utils/getValidationErros';
+import { useToast } from '../../hooks/toast';
 
 import logoLight from '../../images/logo2-light.svg';
 import logoDark from '../../images/logo2-dark.svg';
@@ -16,11 +20,54 @@ import {
   RightSide,
   Forms,
 } from './styles';
+import { useAuth } from '../../hooks/auth';
+
+interface DataProps {
+  email: string;
+  password: string;
+}
 
 function SignIn() {
   const { ToggleTheme, theme } = useTheme();
+  const { addToast } = useToast();
+  const { signIn } = useAuth();
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
+
+  const handleSubmit = useCallback(async (data: DataProps) => {
+    const { email, password } = data;
+    try {
+      formRef.current?.setErrors({});
+
+      const schema = Yup.object().shape({
+        email: Yup.string().email('Deve ser um email válido').required('Email é obrigatório'),
+        password: Yup.string().required('Senha obrigatória'),
+      });
+
+      await schema.validate({ email, password }, {
+        abortEarly: false,
+      });
+
+      await signIn({ email, password });
+
+      history.push('/dashboard');
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        const errors = getValidationErros(err);
+
+        formRef.current?.setErrors(errors);
+
+        return;
+      }
+
+      addToast({
+        type: 'error',
+        title: 'Erro no login',
+        description: 'Ocorreu um erro ao fazer o login, tente novamente.',
+      });
+    }
+  }, [addToast, signIn, history]);
+
   return (
     <Container>
       <LeftSide>
@@ -54,13 +101,16 @@ function SignIn() {
         <div className="content">
           <strong>Fazer Login</strong>
 
-          <Forms onSubmit={() => {}} ref={formRef}>
-            <Input name="email" title="E-mail" />
-            <Input name="passoword" title="Senha" />
+          <Forms onSubmit={handleSubmit} ref={formRef}>
+            <Input name="email" title="E-mail" type="email" />
+            <Input name="password" title="Senha" type="password" />
 
             <div className="footer-form">
               <div className="remember">
-                <input type="checkbox" className="checkbox" />
+                <input
+                  type="checkbox"
+                  className="checkbox"
+                />
                 <span>
                   Lembrar-me
                 </span>
@@ -69,7 +119,7 @@ function SignIn() {
                 Esqueci minha senha
               </Link>
             </div>
-            <button type="button">
+            <button type="submit">
               Entrar
             </button>
           </Forms>

@@ -1,12 +1,15 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
-import { ThemesProvider } from './hooks/themes';
+import AppProvider from './hooks/index';
 
 function App() {
   return (
-    <ThemesProvider>
-      <Routes />
-    </ThemesProvider>
+    <BrowserRouter>
+      <AppProvider>
+        <Routes />
+      </AppProvider>
+    </BrowserRouter>
   );
 }
 
