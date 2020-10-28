@@ -4,6 +4,9 @@ import uploadConfig from './config/upload';
 
 import authMiddleware from './app/middlewares/auth';
 
+import OrphanagesPendingController from './app/controllers/OrphanagesPendingController';
+import OrphanagesApprovesController from './app/controllers/OrphanagesApprovesController';
+
 import OrphanagesController from './app/controllers/OrphanagesController';
 import UsersController from './app/controllers/UsersController';
 import SessionController from './app/controllers/SessionController';
@@ -11,6 +14,9 @@ import SendForgotEmailController from './app/controllers/SendForgotEmailControll
 
 const routes = Router();
 const upload = multer(uploadConfig);
+
+routes.get('/orphanages-pending', OrphanagesPendingController.index);
+routes.get('/orphanages-approves', OrphanagesApprovesController.index);
 
 routes.get('/orphanages', OrphanagesController.index);
 routes.get('/orphanages/:id', OrphanagesController.show);
