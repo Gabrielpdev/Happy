@@ -22,6 +22,9 @@ export default {
     btn_access: '#12D4E0',
     btn_access_hover: '#96FEFF',
     btn_login: '#ebf2f5',
+    btn_sideBar: '#12AFCB',
+    btn_map: '#ebf2f5',
+    btn_map_hover: '#E4EAED',
   },
   font: {
     primary: '#0089a5',

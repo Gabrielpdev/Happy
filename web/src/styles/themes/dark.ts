@@ -9,7 +9,7 @@ export default {
     border_active: '#A1E9C5',
     text_active: '#37C77F',
     input: '#353433',
-    primary: '#29B6D1',
+    primary: '#353433',
     secondary: '#ffd666',
     linear_primary: '#323030',
     linear_secondary: '#3D3D3D',
@@ -22,6 +22,9 @@ export default {
     btn_access: '#323030',
     btn_access_hover: '#858585',
     btn_login: '#353433',
+    btn_sideBar: '#4E4E4E',
+    btn_map: '#4E4E4E',
+    btn_map_hover: '#3D3D3D',
   },
   font: {
     primary: '#4E4E4E',

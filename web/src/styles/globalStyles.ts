@@ -49,5 +49,8 @@ export default createGlobalStyle`
     --text-access-hover: ${(props) => props.theme.font.text_access_hover};
     --text-login: ${(props) => props.theme.font.text_login};
     --btn-login: ${(props) => props.theme.background.btn_login};
+    --btn-sideBar: ${(props) => props.theme.background.btn_sideBar};
+    --btn-map: ${(props) => props.theme.background.btn_map};
+    --btn-map-hover: ${(props) => props.theme.background.btn_map_hover};
   }
 `;

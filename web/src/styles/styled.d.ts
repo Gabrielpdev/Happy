@@ -25,6 +25,9 @@ declare module 'styled-components'{
       btn_access: string;
       btn_access_hover: string;
       btn_login: string;
+      btn_sideBar: string,
+      btn_map: string,
+      btn_map_hover: string,
     },
     font: {
       primary: string;

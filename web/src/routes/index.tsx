@@ -12,7 +12,8 @@ import light from '../styles/themes/light';
 
 import Landing from '../pages/Landing';
 import SignIn from '../pages/SignIn';
-import Dashboard from '../pages/Dashboard';
+import DashboardApproves from '../pages/DashboardApproves';
+import DashboardPending from '../pages/DashboardPending';
 
 import OrphanagesMap from '../pages/OrphanagesMap';
 import Orphanage from '../pages/Orphanage';
@@ -28,7 +29,8 @@ function Routes() {
         <Route path="/app" component={OrphanagesMap} />
         <Route path="/login" component={SignIn} />
 
-        <Route path="/dashboard" component={Dashboard} isPrivate />
+        <Route path="/dashboard/approves" component={DashboardApproves} isPrivate />
+        <Route path="/dashboard/pending" component={DashboardPending} isPrivate />
 
         <Route path="/orphanage/create" component={CreateOrphanage} />
         <Route path="/orphanage/:id" component={Orphanage} />

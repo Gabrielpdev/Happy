@@ -1,14 +1,22 @@
 import React from 'react';
-import { FiArrowLeft, FiMoon, FiSun } from 'react-icons/fi';
+import {
+  FiArrowLeft, FiInfo, FiMoon, FiSun, FiMapPin,
+} from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
 import { useTheme } from '../../hooks/themes';
 
 import mapMarkerLight from '../../images/map-marker-light.svg';
 import mapMarkerDark from '../../images/map-marker-dark.svg';
 
-import { Container, Theme, Footer } from './styles';
+import {
+  Container, Theme, Main, Approves, Pending, Footer,
+} from './styles';
 
-const SideBar: React.FC = () => {
+interface sideBarProps {
+  isRestricted?: boolean;
+}
+
+const SideBar: React.FC<sideBarProps> = ({ isRestricted = false }) => {
   const { ToggleTheme, theme } = useTheme();
   const { goBack } = useHistory();
 
@@ -18,6 +26,17 @@ const SideBar: React.FC = () => {
         <img src={mapMarkerLight} alt="Happy" />
       ) : (
         <img src={mapMarkerDark} alt="Happy" />
+      )}
+
+      {isRestricted && (
+        <Main>
+          <Approves to="/dashboard/approves">
+            <FiMapPin size={32} />
+          </Approves>
+          <Pending to="/dashboard/pending">
+            <FiInfo size={32} />
+          </Pending>
+        </Main>
       )}
 
       <Footer>

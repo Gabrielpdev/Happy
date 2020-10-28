@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
   position: fixed;
@@ -16,6 +17,82 @@ export const Container = styled.div`
   }
 `;
 
+export const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:space-between;
+  height: 110px;
+`;
+
+export const Approves = styled(NavLink)`
+  width: 48px;
+  height: 48px;
+
+  border: 0;
+
+  background: var(--btn-sideBar);
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  color: #fff;
+
+  &:hover {
+    background: var(--bg-button_hover);
+  }
+
+  &.active {
+    background: var(--bg-secondary);
+    color: var(--bg-primary);
+  }
+
+  svg {
+    width: 23px;
+    height: 23px;
+  }
+`;
+
+export const Pending = styled(NavLink)`
+  width: 48px;
+  height: 48px;
+
+  border: 0;
+
+  background: var(--btn-sideBar);
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+
+  &:hover {
+    background: var(--bg-button_hover);
+  }
+
+  &.active {
+    background: var(--bg-secondary);
+    color: var(--bg-primary);
+  }
+
+  svg {
+    width: 23px;
+    height: 23px;
+  }
+`;
+
 export const Footer = styled.div`
   .goBack {
     width: 48px;
@@ -23,7 +100,7 @@ export const Footer = styled.div`
 
     border: 0;
 
-    background: var(--bg-button);
+    background: var(--btn-sideBar);
     border-radius: 16px;
 
     cursor: pointer;
