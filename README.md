@@ -47,7 +47,7 @@
 
 ## 🧐 Sobre <a name = "about"></a>
 
-Happy é uma Aplicação feita durante a **NWL 2.0** oferecido pela [Rocketseat] :rocket:.<br/> 
+Happy é uma Aplicação feita durante a **NWL 3.0** oferecido pela [Rocketseat] :rocket:.<br/> 
 A aplicação visa estabelecer um contato entre as pessoas que deseja visitar um orfanato e os orfanatos 
 mais próximos de sua localização. Como a aplicação foi feita nos dias das crianças, o melhor presente
 que uma criança pode ganhar é o seu tempo e sua atenção a ela.<br/> 
